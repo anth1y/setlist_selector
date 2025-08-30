@@ -80,8 +80,8 @@ Add this server to your MCP-compatible AI interface:
 {
   "mcpServers": {
     "setlist-selector": {
-      "command": "uv",
-      "args": ["run", "python", "/path/to/your/setlist_selector"]
+      "command": "setlist_selector/start_mcp.sh",
+      "args": []
     }
   }
 }
