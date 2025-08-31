@@ -153,6 +153,21 @@ Music Services (Spotify + Last.fm)
 
 ## Testing
 
+### Testing Tools
+```bash
+# Install test dependencies
+uv sync --group test
+
+# Run tests
+uv run pytest tests/ -v
+
+# Test with real APIs (requires valid API keys)
+uv run pytest tests/integration/ -v --real-apis
+
+# Run with coverage
+uv run pytest --cov=setlist_selector --cov-report=html
+```
+
 ### Failure Scenarios
 - **API Rate Limits**: Implement exponential backoff and retry logic
 - **Invalid Search Results**: Fallback to generic recommendations
@@ -208,11 +223,58 @@ Music Services (Spotify + Last.fm)
 ⚠️ **API Costs**: Anthropic charges per token (~$0.01-0.02 per setlist), Spotify/Last.fm are free with limits
 ⚠️ **Authentication Scope**: Current implementation uses client credentials (public data only)
 
+### Caveats & Gotchas
+⚠️ **API Dependencies**: Requires active internet connection and valid API keys for all services
+⚠️ **Rate Limits**: Spotify (100/min), Last.fm (varies), Anthropic (tier-dependent) - may cause delays
+⚠️ **Music Availability**: Song availability varies by region due to Spotify licensing
+⚠️ **AI Variability**: AI-generated setlists may have different quality/relevance across requests
+⚠️ **API Costs**: Anthropic charges per token (~$0.01-0.02 per setlist), Spotify/Last.fm are free with limits
+⚠️ **Authentication Scope**: Current implementation uses client credentials (public data only)
+
 ### Important Notes
 - **No Setlist Saving**: This version searches and recommends but doesn't save setlists to Spotify accounts
 - **Regional Restrictions**: Some tracks may not be available in all countries
 - **Real-time Data**: Music popularity and availability can change
 - **API Versioning**: External APIs may change, requiring updates
+
+## Future Improvements
+
+### With More Time (Priority Order)
+
+1.Enhanced Music Intelligence
+   * Audio feature analysis for better matching (tempo, key, energy)
+   * Machine learning models for personalized recommendations
+   * Integration with more music services (Apple Music, YouTube Music)
+
+2. User Experience Features
+   * Setlist saving to Spotify accounts (requires user OAuth)
+   * Web interface for setlist management and sharing
+   * Real-time collaborative setlist creation
+
+3. Advanced AI Capabilities
+   * Contextual awareness (time of day, weather, calendar events)
+   * Learning from user feedback and preferences
+   * Multi-language setlist descriptions and international music discovery
+
+4. Performance & Reliability
+   * Redis caching for frequently accessed data
+   * Background job processing for large setlists
+   * Comprehensive monitoring and alerting
+   * A/B testing for setlist quality optimization
+
+5. Enterprise Features
+   * Multi-user support with individual preferences
+   * Analytics dashboard for music trends and usage
+   * API rate limit management and scaling
+   * Integration with business music platforms
+
+ ### Expanded Functionality
+   * Mood Detection: Analyze user's recent music to suggest mood-appropriate setlists
+   * Event-Based Setlists: Generate music for specific events, seasons, or activities
+   * Social Features: Share and collaborate on setlists with friends
+   * Cross-Platform Sync: Sync setlists across multiple music services
+   * Voice Integration: Voice commands for setlist creation and control
+   * Visual Analysis: Generate setlists from image mood boards or color palettes
 
 ### Development Setup
 ```bash
