@@ -66,6 +66,9 @@ uv run python -m setlist_selector.main
 
 # Or with regular python
 python -m setlist_selector.main
+
+# Or start the server with the wrapper script
+./start_mcp.sh
 ```
 
 ### 5. Connect to AI Interface
