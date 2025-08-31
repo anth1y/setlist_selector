@@ -62,13 +62,10 @@ vim .env
 
 ```bash
 # Using uv
-uv run python main.py
-
-# Or if installed globally
-setlist-selector
+uv run python -m setlist_selector.main
 
 # Or with regular python
-python main.py
+python -m setlist_selector.main
 ```
 
 ### 5. Connect to AI Interface
@@ -86,6 +83,8 @@ Add this server to your MCP-compatible AI interface:
   }
 }
 ```
+
+Be sure to restart your claude desktop app after adding the above configuration.
 
 ## Available Tools
 
